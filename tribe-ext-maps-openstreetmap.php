@@ -35,12 +35,30 @@ if (
 	class Tribe__Extension__OpenStreetMap extends Tribe__Extension {
 
 		/**
+		 * Is Events Calendar PRO active. If yes, we will add some extra functionality.
+		 *
+		 * @return bool
+		 */
+		public $ecp_active = false;
+
+		/**
 		 * Setup the Extension's properties.
 		 *
 		 * This always executes even if the required plugins are not present.
 		 */
 		public function construct() {
 			$this->add_required_plugin( 'Tribe__Events__Main', '4.3' );
+			add_action( 'tribe_plugins_loaded', array( $this, 'detect_ecp' ), 0 );
+		}
+
+		/**
+		 * Check required plugins after all Tribe plugins have loaded.
+		 */
+		public function detect_ecp() {
+			if ( Tribe__Dependency::instance()->is_plugin_active( 'Tribe__Events__Pro__Main' ) ) {
+				$this->add_required_plugin( 'Tribe__Events__Pro__Main', '4.3.1' );
+				$this->ecp_active = true;
+			}
 		}
 
 		/**
