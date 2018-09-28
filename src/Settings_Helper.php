@@ -4,11 +4,6 @@ namespace Tribe\Extensions\Maps_OSM;
 
 use Tribe__Main;
 
-// Do not load directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	die( '-1' );
-}
-
 if ( ! class_exists( 'Settings_Helper' ) ) {
 
 	/**

@@ -57,7 +57,6 @@ if ( ! defined( __NAMESPACE__ . '\NS' ) ) {
 if ( ! defined( NS . 'PLUGIN_TEXT_DOMAIN' ) ) {
 	// `Tribe\Extensions\Maps_OSM\PLUGIN_TEXT_DOMAIN` is defined
 	define( NS . 'PLUGIN_TEXT_DOMAIN', 'tribe-ext-maps-openstreetmap' );
-	$x = PLUGIN_TEXT_DOMAIN;
 }
 
 // Do not load unless Tribe Common is fully loaded and our class does not yet exist.
@@ -87,13 +86,13 @@ if (
 		 */
 		public function construct() {
 			$this->add_required_plugin( 'Tribe__Events__Main', '4.3' );
-			add_action( 'tribe_plugins_loaded', array( $this, 'detect_ecp' ), 0 );
+			add_action( 'tribe_plugins_loaded', array( $this, 'detect_tec_pro' ), 0 );
 		}
 
 		/**
 		 * Check required plugins after all Tribe plugins have loaded.
 		 */
-		public function detect_ecp() {
+		public function detect_tec_pro() {
 			if ( Tribe__Dependency::instance()->is_plugin_active( 'Tribe__Events__Pro__Main' ) ) {
 				$this->add_required_plugin( 'Tribe__Events__Pro__Main', '4.3.1' );
 				$this->ecp_active = true;
@@ -151,7 +150,7 @@ if (
 		}
 
 		/**
-		 *
+		 * Use Tribe Autoloader for all class files within this namespace in the 'src' directory.
 		 *
 		 * @return Tribe__Autoloader
 		 */
@@ -160,7 +159,7 @@ if (
 				$this->class_loader = new Tribe__Autoloader;
 				$this->class_loader->set_dir_separator( '\\' );
 				$this->class_loader->register_prefix(
-					'Tribe\Extensions\Maps_OSM\\',
+					NS,
 					__DIR__ . DIRECTORY_SEPARATOR . 'src'
 				);
 			}

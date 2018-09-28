@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( ! class_exists( 'Settings' ) ) {
 	/**
-	 * Disable all of Google Maps.
+	 * Do the Settings (remove Google Maps, add OSM's).
 	 */
 	class Settings {
 
@@ -79,7 +79,7 @@ if ( ! class_exists( 'Settings' ) ) {
 		 */
 		public function add_settings() {
 			$fields = [
-				$this->opts_prefix . 'Maps_OSM'       => [
+				$this->opts_prefix . 'Maps_OSM'  => [
 					'type' => 'html',
 					'html' => $this->get_osm_intro_text(),
 				],
