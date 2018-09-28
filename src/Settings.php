@@ -55,13 +55,17 @@ if ( ! class_exists( 'Settings' ) ) {
 		private function get_osm_intro_text() {
 			$result = '<h3>' . esc_html_x( 'OpenStreetMap (OSM) Setup', 'Settings header', PLUGIN_TEXT_DOMAIN ) . '</h3>';
 			$result .= '<div style="margin-left: 20px;">';
-			$result .= '<p>' . esc_html_x( 'Acknowledgements: By using this extension, you agree to the following usage terms:', 'Settings', PLUGIN_TEXT_DOMAIN );
+			$result .= '<p>' . esc_html_x( 'Acknowledgements: Deactivate and uninstall this extension if you do not agree to the following terms:', 'Settings', PLUGIN_TEXT_DOMAIN );
 			$result .= '<ul style="list-style: disc; margin-left: 40px;">';
 			$result .= '<li>' . sprintf( _x( '<a href="%s" target="_blank">OpenStreetMap</a>', 'Settings', PLUGIN_TEXT_DOMAIN ), 'https://wiki.osmfoundation.org/wiki/Licence' ) . '</li>';
 			$result .= '<li>' . sprintf( _x( '<a href="%s" target="_blank">Nominatim usage policy</a> - open source search (geolocation) based on OpenStreetMap data', 'Settings', PLUGIN_TEXT_DOMAIN ), 'https://operations.osmfoundation.org/policies/nominatim/' ) . '</li>';
 			$result .= '<li>' . sprintf( _x( '<a href="%s" target="_blank">Nominatim</a> (OSM geocoding service)', 'Settings', PLUGIN_TEXT_DOMAIN ), 'https://operations.osmfoundation.org/policies/nominatim/' ) . '</li>';
 			$result .= '</ul>';
-			$result .= '<small><em>' . esc_html_x( '(all links open in a new window)', 'Settings', PLUGIN_TEXT_DOMAIN ) . '</em></small>';
+			$result .= '<small><em>';
+			$result .= esc_html_x( 'All trademarks are owned by their respective entities, not by Modern Tribe.', 'Settings', PLUGIN_TEXT_DOMAIN );
+			$result .= '<br>';
+			$result .= esc_html_x( 'All links open in a new window.', 'Settings', PLUGIN_TEXT_DOMAIN );
+			$result .= '</em></small>';
 			$result .= '</p>';
 			$result .= '</div>';
 
@@ -79,9 +83,9 @@ if ( ! class_exists( 'Settings' ) ) {
 					'type' => 'html',
 					'html' => $this->get_osm_intro_text(),
 				],
-				$this->opts_prefix . 'custom_all_events_url' => [
+				$this->opts_prefix . 'a_setting' => [ // TODO
 					'type'            => 'text',
-					'label'           => esc_html__( 'xxxCustom "All Events" URL', PLUGIN_TEXT_DOMAIN ),
+					'label'           => esc_html__( 'xxx try this', PLUGIN_TEXT_DOMAIN ),
 					'tooltip'         => sprintf( esc_html__( 'Enter your custom URL, including "http://" or "https://", for example %s.', PLUGIN_TEXT_DOMAIN ), '<code>https://mydomain.com/events/</code>' ),
 					'validation_type' => 'html',
 				]
