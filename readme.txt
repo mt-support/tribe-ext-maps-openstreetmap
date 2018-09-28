@@ -9,7 +9,15 @@ Stable tag: 1.0.0
 License: GPL version 3 or any later version
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Replace all Google Maps functionality with that of OpenStreetMap, including map displays on single event pages and Events Calendar PRO's venue geocoding, Map View, and single venue pages.
+Replace Google Maps with OpenStreetMap (OSM), including map displays on single event pages and Events Calendar PRO's venue geocoding, Map View, and single venue pages.
+
+== Description ==
+
+This extension fully replaces the default mapping provider, Google Maps, with OpenStreetMap.
+
+Once activated, this extension displays terms and settings at wp-admin > Events > Settings > General tab > "OpenStreetMap (OSM) Setup" section.
+
+Do not use this extension if you do not agree to these terms.
 
 == Installation ==
 

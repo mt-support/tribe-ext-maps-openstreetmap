@@ -3,9 +3,9 @@
  * Plugin Name:       The Events Calendar Extension: OpenStreetMap
  * Plugin URI:        https://theeventscalendar.com/extensions/---the-extension-article-url---/
  * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-maps-openstreetmap
- * Description:       Replace all Google Maps functionality with that of OpenStreetMap, including map displays on single event pages and Events Calendar PRO's venue geocoding, Map View, and single venue pages.
+ * Description:       Replace Google Maps with OpenStreetMap (OSM), including map displays on single event pages and Events Calendar PRO's venue geocoding, Map View, and single venue pages.
  * Version:           1.0.0
- * Extension Class:   Tribe__Extension__OpenStreetMap
+ * Extension Class:   Tribe\Extensions\Maps_OSM\Maps_OpenStreetMap
  * GitHub Plugin URI: https://github.com/mt-support/extension-template
  * Author:            Modern Tribe, Inc.
  * Author URI:        http://m.tri.be/1971
@@ -24,15 +24,54 @@
  *     GNU General Public License for more details.
  */
 
+/**
+ * TODO: require TEC version 18.16? https://central.tri.be/issues/114865
+ * TODO: Fix geolocation data
+ * TODO: event single
+ * TODO: venue single
+ * TODO: map view
+ * TODO: import settings
+ * TODO: geolocation
+ * TODO: https://wiki.osmfoundation.org/wiki/Licence/Licence_and_Legal_FAQ#What_do_you_mean_by_.22Attribution.22.3F
+ * TODO: extension article
+ * TODO:
+ * TODO:
+ * TODO:
+ * TODO:
+ */
+
+namespace Tribe\Extensions\Maps_OSM;
+
+use Tribe__Autoloader;
+use Tribe__Dependency;
+use Tribe__Extension;
+
+/**
+ * Define Constants
+ */
+
+if ( ! defined( __NAMESPACE__ . '\NS' ) ) {
+	define( __NAMESPACE__ . '\NS', __NAMESPACE__ . '\\' );
+}
+
+if ( ! defined( NS . 'PLUGIN_TEXT_DOMAIN' ) ) {
+	// `Tribe\Extensions\Maps_OSM\PLUGIN_TEXT_DOMAIN` is defined
+	define( NS . 'PLUGIN_TEXT_DOMAIN', 'tribe-ext-maps-openstreetmap' );
+	$x = PLUGIN_TEXT_DOMAIN;
+}
+
 // Do not load unless Tribe Common is fully loaded and our class does not yet exist.
 if (
 	class_exists( 'Tribe__Extension' )
-	&& ! class_exists( 'Tribe__Extension__OpenStreetMap' )
+	&& ! class_exists( 'Tribe\Extensions\Maps_OSM\Maps_OpenStreetMap' )
 ) {
 	/**
 	 * Extension main class, class begins loading on init() function.
 	 */
-	class Tribe__Extension__OpenStreetMap extends Tribe__Extension {
+	class Maps_OpenStreetMap extends Tribe__Extension {
+
+		/** @var Tribe__Autoloader */
+		private $class_loader;
 
 		/**
 		 * Is Events Calendar PRO active. If yes, we will add some extra functionality.
@@ -66,12 +105,27 @@ if (
 		 */
 		public function init() {
 			// Load plugin textdomain
-			// Don't forget to generate the 'languages/tribe-ext-maps-openstreetmap.pot' file
-			load_plugin_textdomain( 'tribe-ext-maps-openstreetmap', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+			load_plugin_textdomain( PLUGIN_TEXT_DOMAIN, false, basename( dirname( __FILE__ ) ) . '/languages/' );
 
-			/**
-			 * All extensions require PHP 5.6+, following along with https://theeventscalendar.com/knowledgebase/php-version-requirement-changes/
-			 */
+			if ( ! $this->php_version_check() ) {
+				return;
+			}
+
+			$this->class_loader();
+
+			if ( is_admin() ) {
+				new Settings();
+			}
+		}
+
+		/**
+		 * Check if we have a sufficient version of PHP. Admin notice if we don't and user should see it.
+		 *
+		 * @link https://theeventscalendar.com/knowledgebase/php-version-requirement-changes/
+		 *
+		 * @return bool
+		 */
+		private function php_version_check() {
 			$php_required_version = '5.6';
 
 			if ( version_compare( PHP_VERSION, $php_required_version, '<' ) ) {
@@ -81,7 +135,7 @@ if (
 				) {
 					$message = '<p>';
 
-					$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', 'tribe-ext-maps-openstreetmap' ), $this->get_name(), $php_required_version );
+					$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', PLUGIN_TEXT_DOMAIN ), $this->get_name(), $php_required_version );
 
 					$message .= sprintf( ' <a href="%1$s">%1$s</a>', 'https://wordpress.org/about/requirements/' );
 
@@ -90,19 +144,30 @@ if (
 					tribe_notice( $this->get_name(), $message, 'type=error' );
 				}
 
-				return;
+				return false;
 			}
 
-			// Insert filters and hooks here
-			add_filter( 'thing_we_are_filtering', array( $this, 'my_custom_function' ) );
+			return true;
 		}
 
 		/**
-		 * Include a docblock for every class method and property.
+		 *
+		 *
+		 * @return Tribe__Autoloader
 		 */
-		public function my_custom_function() {
-			// custom stuff
-		}
+		public function class_loader() {
+			if ( empty( $this->class_loader ) ) {
+				$this->class_loader = new Tribe__Autoloader;
+				$this->class_loader->set_dir_separator( '\\' );
+				$this->class_loader->register_prefix(
+					'Tribe\Extensions\Maps_OSM\\',
+					__DIR__ . DIRECTORY_SEPARATOR . 'src'
+				);
+			}
 
+			$this->class_loader->register_autoloader();
+
+			return $this->class_loader;
+		}
 	} // end class
 } // end if class_exists check
