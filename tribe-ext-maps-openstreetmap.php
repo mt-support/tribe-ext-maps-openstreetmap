@@ -243,8 +243,8 @@ if (
 		 * TODO: Testing Hello World. Delete this for your new extension.
 		 */
 		public function missing_plugin_message() {
-			$message = sprintf( '<p>Please note, %s requires the %s plugin to work.</p>', '<strong>' . $this->get_name() . '</strong>', '<a href="https://wordpress.org/plugins/leaflet-map/" target="_blank">Leaflet Map</a>' );
-			$message .= sprintf( '<p>%s to go to the Plugins &gt; Add new page to download and install the plugin.</p>', '<a href="plugin-install.php?s=Leaflet+Map&tab=search&type=term">Click here</a>' );
+			$message = sprintf( '<p>&#9888; Please note, %s requires the %s plugin to work.</p>', '<strong>' . $this->get_name() . '</strong>', '<a href="https://wordpress.org/plugins/leaflet-map/" target="_blank">Leaflet Map &#x1F5D7;</a>' );
+			$message .= sprintf( '<p>%s to go to the Plugins &gt; Add new page to download and install Leaflet Map.</p>', '<a href="plugin-install.php?s=Leaflet+Map&tab=search&type=term">Click here</a>' );
 			tribe_notice( PLUGIN_TEXT_DOMAIN, $message, [ 'type' => 'warning' ] );
 		}
 
