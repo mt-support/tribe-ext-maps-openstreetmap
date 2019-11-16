@@ -3,7 +3,7 @@
  * Plugin Name:       The Events Calendar Extension: OpenStreetMap
  * Plugin URI:        https://theeventscalendar.com/extensions/openstreetmap/
  * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-maps-openstreetmap
- * Description:       Replace all Google Maps functionality with that of OpenStreetMap, including map displays on single event pages and Events Calendar PRO's venue geocoding, Map View, and single venue pages.
+ * Description:       Replace all Google Maps functionality with that of OpenStreetMap, including map displays on single event pages, and Events Calendar PRO's Map View, and single venue pages. <strong>This extension requires the <a href="plugin-install.php?s=Leaflet+Map&tab=search&type=term">Leaflet Map</a> plugin.</strong> Special thanks to Gerd Weyhing for the <a href="https://woyng.com/the-events-calendar-mit-openstreetmaps-statt-google-maps/" target="_blank">inspiration</a>. Note: This extension doesn't yet support venue geocoding.
  * Version:           1.0.0
  * Extension Class:   Tribe\Extensions\OpenStreetMap\Main
  * Author:            Modern Tribe, Inc.
@@ -270,13 +270,6 @@ if (
 			$settings = $this->get_settings();
 
 			return $settings->get_all_options();
-		}
-
-		/**
-		 * Include a docblock for every class method and property.
-		 */
-		public function my_custom_function() {
-			// do your custom stuff
 		}
 
 	} // end class

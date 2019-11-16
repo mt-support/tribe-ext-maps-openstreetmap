@@ -225,7 +225,7 @@ class Settings {
 			],
 			$this->opts_prefix . 'default_map_view_height' => [ // TODO
 				'type'            => 'text',
-				'label'           => esc_html__( 'Default height of the map on Map view', PLUGIN_TEXT_DOMAIN ),
+				'label'           => esc_html__( 'Default height of map on Map view', PLUGIN_TEXT_DOMAIN ),
 				'tooltip'         => esc_html__( 'Defaults to 250px when left empty.', PLUGIN_TEXT_DOMAIN ),
 				'size'            => 'small',
 				'validation_type' => 'number_or_percent',
