@@ -160,11 +160,10 @@ if (
 
 			$this->get_settings();
 
-			// TODO: Just a test. Remove this.
-			$this->testing_hello_world();
-
 			// Insert filter and action hooks here
-			add_action( 'init', array( $this, 'common_setup' ) );
+			if ( class_exists( \Leaflet_Map::class ) ) {
+				add_action( 'init', array( $this, 'common_setup' ) );
+			}
 		}
 
 		/**
@@ -235,41 +234,6 @@ if (
 					return plugin_dir_path( __FILE__ ) . $new_template;
 				}, 10, 3 );
 			}
-		}
-
-		/**
-		 * TODO: Testing Hello World. Delete this for your new extension.
-		 */
-		public function testing_hello_world() {
-			$message = sprintf( '<p>Hello World from %s. Make sure to remove this in your own new extension.</p>', '<strong>' . $this->get_name() . '</strong>' );
-
-			$message .= sprintf( '<p><strong>Bonus!</strong> Get one of our own custom option values: %s</p><p><em>See the code to learn more.</em></p>', $this->get_one_custom_option() );
-
-			tribe_notice( PLUGIN_TEXT_DOMAIN . '-hello-world', $message, [ 'type' => 'info' ] );
-		}
-
-		/**
-		 * Demonstration of getting this extension's `a_setting` option value.
-		 *
-		 * TODO: Rework or remove this.
-		 *
-		 * @return mixed
-		 */
-		public function get_one_custom_option() {
-			$settings = $this->get_settings();
-
-			return $settings->get_option( 'a_setting', 'https://theeventscalendar.com/' );
-		}
-
-		/**
-		 * Get all of this extension's options.
-		 *
-		 * @return array
-		 */
-		public function get_all_options() {
-			$settings = $this->get_settings();
-
-			return $settings->get_all_options();
 		}
 
 	} // end class
