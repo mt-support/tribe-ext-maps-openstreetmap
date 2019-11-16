@@ -196,27 +196,45 @@ class Settings {
 			$this->opts_prefix . 'zoom_control' => [ // TODO
 				'type'            => 'checkbox_bool',
 				'label'           => esc_html__( 'Enable zoom control', PLUGIN_TEXT_DOMAIN ),
-				'tooltip'         => esc_html__( 'Check to enable zoom control buttons on the map', PLUGIN_TEXT_DOMAIN ),
+				'tooltip'         => esc_html__( 'Check to enable zoom control buttons on the map.', PLUGIN_TEXT_DOMAIN ),
 				'validation_type' => 'boolean',
 			],
 			$this->opts_prefix . 'zoom_level_single' => [ // TODO
 				'type'            => 'text',
 				'label'           => esc_html__( 'Default zoom level', PLUGIN_TEXT_DOMAIN ),
-				'tooltip'         => esc_html__( 'Default zoom level for single event view and venue page*. 0 = zoomed out; 20 = zoomed in.', PLUGIN_TEXT_DOMAIN ) . " *" . esc_html__( 'Only works with Events Calendar PRO.', PLUGIN_TEXT_DOMAIN ),
+				'tooltip'         => esc_html__( 'Default zoom level for single event view and venue page*.', PLUGIN_TEXT_DOMAIN ) . " " . esc_html__( ' 0 = zoomed out; 20 = zoomed in.', PLUGIN_TEXT_DOMAIN ) . " *" . sprintf( esc_html__( 'Note: Venue page requires %s.', PLUGIN_TEXT_DOMAIN ), '<a href="http://m.tri.be/k0" target="_blank">Events Calendar PRO</a>' ),
 				'size'            => 'small',
 				'validation_type' => 'number_or_percent',
+			],
+			$this->opts_prefix . 'use_lat_long' => [ // TODO
+				'type'            => 'checkbox_bool',
+				'label'           => esc_html__( 'Use latitude and longitude', PLUGIN_TEXT_DOMAIN ),
+				'tooltip'         => esc_html__( 'Check this to use the latitude and longitude data saved with the venue instead of the address.', PLUGIN_TEXT_DOMAIN ) . ' ' . sprintf( esc_html__( 'Requires %s.', PLUGIN_TEXT_DOMAIN ), '<a href="http://m.tri.be/k0" target="_blank">Events Calendar PRO</a>' ),
+				'validation_type' => 'boolean',
+			],
+			$this->opts_prefix . 'Example'   => [
+				'type' => 'html',
+				'html' => $this->get_example_intro_text(),
 			],
 			$this->opts_prefix . 'zoom_level_map' => [ // TODO
 				'type'            => 'text',
 				'label'           => esc_html__( 'Default zoom level for Map view', PLUGIN_TEXT_DOMAIN ),
-				'tooltip'         => esc_html__( 'Default zoom level for Map view. 0 = zoomed out; 20 = zoomed in.', PLUGIN_TEXT_DOMAIN ) . " " . esc_html__( 'Only works with Events Calendar PRO.', PLUGIN_TEXT_DOMAIN ),
+				'tooltip'         => esc_html__( 'Default zoom level for Map view.', PLUGIN_TEXT_DOMAIN ) . " " . esc_html__( ' 0 = zoomed out; 20 = zoomed in.', PLUGIN_TEXT_DOMAIN ),
 				'size'            => 'small',
 				'validation_type' => 'number_or_percent',
+			],
+			$this->opts_prefix . 'default_map_view_height' => [ // TODO
+				'type'            => 'text',
+				'label'           => esc_html__( 'Default height of the map on Map view', PLUGIN_TEXT_DOMAIN ),
+				'tooltip'         => esc_html__( 'Defaults to 250px when left empty.', PLUGIN_TEXT_DOMAIN ),
+				'size'            => 'small',
+				'validation_type' => 'number_or_percent',
+				'can_be_empty'    => true,
 			],
 			$this->opts_prefix . 'default_map_address' => [ // TODO
 				'type'            => 'text',
 				'label'           => esc_html__( 'Default Map view address', PLUGIN_TEXT_DOMAIN ),
-				'tooltip'         => esc_html__( 'Add here an address where you want the map on Map view to be centered on. Required format: Street and House Number, ZIP City, Country.', PLUGIN_TEXT_DOMAIN ) . " " . esc_html__( 'Only works with Events Calendar PRO.', PLUGIN_TEXT_DOMAIN ),
+				'tooltip'         => esc_html__( 'Add here an address where you want the map on Map view to be centered on. Required format: Street and House Number, ZIP City, Country.', PLUGIN_TEXT_DOMAIN ),
 				'validation_type' => 'textarea',
 				'can_be_empty'    => true
 			],
@@ -229,5 +247,21 @@ class Settings {
 			false
 		);
 	}
+
+	/**
+	 * Here is an example of getting some HTML for the Settings Header.
+	 *
+	 * @return string
+	 */
+	private function get_example_intro_text() {
+		$result = '<h3>' . esc_html_x( 'Map View Settings', 'Settings header', PLUGIN_TEXT_DOMAIN ) . '</h3>';
+		$result .= '<div style="margin-left: 20px;">';
+		$result .= '<p>';
+		$result .= sprintf( esc_html_x( 'The below settings affect only the Map view, which requires %s.', 'Settings', PLUGIN_TEXT_DOMAIN ), '<a href="http://m.tri.be/k0" target="_blank">Events Calendar PRO</a>' );
+		$result .= '</p>';
+		$result .= '</div>';
+		return $result;
+	}
+
 
 } // class

@@ -20,8 +20,10 @@ $zoomlevel = $zoomlevel > 18 ? 18 : $zoomlevel;
 
 $zoomcontrol = tribe_get_option( 'tribe_ext_openstreetmap_zoom_control' );
 
+$mapheight = tribe_get_option( 'tribe_ext_openstreetmap_default_map_view_height' );
+
 $center = esc_html( tribe_get_option( 'tribe_ext_openstreetmap_default_map_address' ) );
 
-$shortcode  = '[leaflet-map address="' . $center . '" zoomcontrol=' . $zoomcontrol . ' zoom=' . $zoomlevel . ']';
+$shortcode  = '[leaflet-map address="' . $center . '" zoomcontrol=' . $zoomcontrol . ' zoom=' . $zoomlevel . ' height=' . $mapheight . ']';
 
 echo do_shortcode( $shortcode );
