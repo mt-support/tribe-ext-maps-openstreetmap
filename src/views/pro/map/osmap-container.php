@@ -20,7 +20,7 @@ $zoomlevel = $zoomlevel > 18 ? 18 : $zoomlevel;
 
 $zoomcontrol = tribe_get_option( 'tribe_ext_openstreetmap_zoom_control' );
 
-$mapheight = tribe_get_option( 'tribe_ext_openstreetmap_default_map_view_height' );
+$mapheight = tribe_get_option( 'tribe_ext_openstreetmap_map_view_container_height' );
 
 $center = esc_html( tribe_get_option( 'tribe_ext_openstreetmap_default_map_address' ) );
 

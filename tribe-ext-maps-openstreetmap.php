@@ -160,9 +160,12 @@ if (
 
 			$this->get_settings();
 
-			// Insert filter and action hooks here
+			// If Leaflet Map plugin is active, then do the magic.
 			if ( class_exists( \Leaflet_Map::class ) ) {
 				add_action( 'init', array( $this, 'common_setup' ) );
+			}
+			else {
+
 			}
 		}
 

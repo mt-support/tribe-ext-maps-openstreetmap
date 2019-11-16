@@ -23,6 +23,8 @@ $zoomlevel = $zoomlevel > 18 ? 18 : $zoomlevel;
 
 $zoomcontrol = tribe_get_option( 'tribe_ext_openstreetmap_zoom_control' );
 
+$mapheight = tribe_get_option( 'tribe_ext_openstreetmap_map_container_height' );
+
 $venue_id = tribe_get_venue_id();
 
 /* If Events Calendar PRO is active and we are using Lat and Lng then */
@@ -36,7 +38,7 @@ else {
 	$address = 'address="' . $address . '"';
 	}
 
-$shortcode  = '[leaflet-map ' . $address . ' zoom=' . $zoomlevel . ' zoomcontrol=' . $zoomcontrol . ']';
+$shortcode  = '[leaflet-map ' . $address . ' zoom=' . $zoomlevel . ' zoomcontrol=' . $zoomcontrol . ' height=' . $mapheight . ']';
 $shortcode .= '[leaflet-marker]';
-
+var_dump($shortcode);
 echo do_shortcode( $shortcode );
