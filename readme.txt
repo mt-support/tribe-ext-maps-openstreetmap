@@ -9,7 +9,7 @@ Stable tag: 1.0.0
 License: GPL version 3 or any later version
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-The extension replaces most Google Maps functionality with that of OpenStreetMap, including map displays on single event pages, and Events Calendar PRO's Map View, and single venue pages.
+The extension replaces most of the Google Maps functionality with that of OpenStreetMap, including map displays on single event pages, and Events Calendar PRO's Map View, and single venue pages.
 
 == Description ==
 

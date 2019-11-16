@@ -12,7 +12,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 ## Description 
 
-The extension replaces most Google Maps functionality with that of OpenStreetMap, including map displays on single event pages, and Events Calendar PRO's Map View, and single venue pages.
+The extension replaces most of the Google Maps functionality with that of OpenStreetMap, including map displays on single event pages, and Events Calendar PRO's Map View, and single venue pages.
 
 This extension requires the [Leaflet Map](https://wordpress.org/plugins/leaflet-map/) plugin by [bozdoz](https://profiles.wordpress.org/bozdoz/). Special thanks to Gerd Weyhing for the [inspiration](https://woyng.com/the-events-calendar-mit-openstreetmaps-statt-google-maps/).
 
