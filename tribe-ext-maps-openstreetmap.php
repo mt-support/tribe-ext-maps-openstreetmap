@@ -164,7 +164,7 @@ if (
 			$this->testing_hello_world();
 
 			// Insert filter and action hooks here
-			//add_filter( 'thing_we_are_filtering', [ $this, 'my_custom_function' ] );
+			add_action( 'init', array( $this, 'common_setup' ) );
 		}
 
 		/**
@@ -216,6 +216,25 @@ if (
 			$this->class_loader->register_autoloader();
 
 			return $this->class_loader;
+		}
+
+		/**
+		 * Do the things to override the templates.
+		 */
+		public function common_setup() {
+			$this->setup_templates();
+		}
+
+		/**
+		 * Filters templates to use our overrides.
+		 */
+		private function setup_templates() {
+			foreach ( $this->templates() as $template => $new_template ) {
+				add_filter( 'tribe_get_template_part_path_' . $template, function ( $file, $slug, $name ) use ( $new_template ) {
+					// Return the path for our file.
+					return plugin_dir_path( __FILE__ ) . $new_template;
+				}, 10, 3 );
+			}
 		}
 
 		/**
