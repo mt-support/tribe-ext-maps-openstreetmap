@@ -1,16 +1,16 @@
 <?php
 /**
- * Plugin Name:       [Base Plugin Name] Extension: [Extension Name]
- * Plugin URI:        https://theeventscalendar.com/extensions/---the-extension-article-url---/
- * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-extension-template
- * Description:       [Extension Description]
+ * Plugin Name:       The Events Calendar Extension: OpenStreetMap
+ * Plugin URI:        https://theeventscalendar.com/extensions/openstreetmap/
+ * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-maps-openstreetmap
+ * Description:       Replace all Google Maps functionality with that of OpenStreetMap, including map displays on single event pages and Events Calendar PRO's venue geocoding, Map View, and single venue pages.
  * Version:           1.0.0
- * Extension Class:   Tribe\Extensions\Example\Main
+ * Extension Class:   Tribe\Extensions\OpenStreetMap\Main
  * Author:            Modern Tribe, Inc.
  * Author URI:        http://m.tri.be/1971
  * License:           GPL version 3 or any later version
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain:       tribe-ext-extension-template
+ * Text Domain:       tribe-ext-openstreetmap
  *
  *     This plugin is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -23,11 +23,12 @@
  *     GNU General Public License for more details.
  */
 
-namespace Tribe\Extensions\Example;
+namespace Tribe\Extensions\OpenStreetMap;
 
 use Tribe__Autoloader;
 use Tribe__Dependency;
 use Tribe__Extension;
+use Tribe__Settings;
 
 /**
  * Define Constants
@@ -39,7 +40,7 @@ if ( ! defined( __NAMESPACE__ . '\NS' ) ) {
 
 if ( ! defined( NS . 'PLUGIN_TEXT_DOMAIN' ) ) {
 	// `Tribe\Extensions\Example\PLUGIN_TEXT_DOMAIN` is defined
-	define( NS . 'PLUGIN_TEXT_DOMAIN', 'tribe-ext-extension-template' );
+	define( NS . 'PLUGIN_TEXT_DOMAIN', 'tribe-ext-openstreetmap' );
 }
 
 // Do not load unless Tribe Common is fully loaded and our class does not yet exist.
@@ -74,7 +75,20 @@ if (
 		 *
 		 * @return bool
 		 */
-		public $ecp_active = false;
+		public $ecp_active = true;
+
+		/**
+		 * The list of The Events Calendar's template files to override with
+		 * which of this plugin's template files.
+		 *
+		 * @return array
+		 */
+		private function templates() {
+			return array(
+				'modules/map.php'            => 'src/views/modules/open-street-map.php',
+				'pro/map/gmap-container.php' => 'src/views/pro/map/osmap-container.php',
+			);
+		}
 
 		/**
 		 * Setup the Extension's properties.
@@ -93,18 +107,12 @@ if (
 			 *
 			 * If using `tribe()`, such as with `Tribe__Dependency`, require TEC/ET version 4.4+ (January 9, 2017).
 			 */
-			// $this->add_required_plugin( 'Tribe__Tickets__Main', '4.4' );
-			// $this->add_required_plugin( 'Tribe__Tickets_Plus__Main', '4.3.3' );
-			// $this->add_required_plugin( 'Tribe__Events__Main', '4.4' );
-			// $this->add_required_plugin( 'Tribe__Events__Pro__Main', '4.3.3' );
-			// $this->add_required_plugin( 'Tribe__Events__Community__Main', '4.3.2' );
-			// $this->add_required_plugin( 'Tribe__Events__Community__Tickets__Main', '4.3.2' );
-			// $this->add_required_plugin( 'Tribe__Events__Filterbar__View', '4.3.3' );
-			// $this->add_required_plugin( 'Tribe__Events__Tickets__Eventbrite__Main', '4.3.2' );
-			// $this->add_required_plugin( 'Tribe_APM', '4.4' );
+			$this->add_required_plugin( 'Tribe__Events__Main', '4.9.10' );
 
 			// Conditionally-require Events Calendar PRO. If it is active, run an extra bit of code.
 			add_action( 'tribe_plugins_loaded', [ $this, 'detect_tec_pro' ], 0 );
+
+			//$this->set_url( 'https://theeventscalendar.com/extensions/openstreetmap/' );
 		}
 
 		/**
@@ -156,7 +164,7 @@ if (
 			$this->testing_hello_world();
 
 			// Insert filter and action hooks here
-			add_filter( 'thing_we_are_filtering', [ $this, 'my_custom_function' ] );
+			//add_filter( 'thing_we_are_filtering', [ $this, 'my_custom_function' ] );
 		}
 
 		/**
@@ -164,28 +172,13 @@ if (
 		 *
 		 * @link https://theeventscalendar.com/knowledgebase/php-version-requirement-changes/ All extensions require PHP 5.6+.
 		 *
-		 * Delete this paragraph and the non-applicable comments below.
-		 * Make sure to match the readme.txt header.
-		 *
-		 * Note that older version syntax errors may still throw fatals even
-		 * if you implement this PHP version checking so QA it at least once.
-		 *
-		 * @link https://secure.php.net/manual/en/migration56.new-features.php
-		 * 5.6: Variadic Functions, Argument Unpacking, and Constant Expressions
-		 *
 		 * @link https://secure.php.net/manual/en/migration70.new-features.php
 		 * 7.0: Return Types, Scalar Type Hints, Spaceship Operator, Constant Arrays Using define(), Anonymous Classes, intdiv(), and preg_replace_callback_array()
-		 *
-		 * @link https://secure.php.net/manual/en/migration71.new-features.php
-		 * 7.1: Class Constant Visibility, Nullable Types, Multiple Exceptions per Catch Block, `iterable` Pseudo-Type, and Negative String Offsets
-		 *
-		 * @link https://secure.php.net/manual/en/migration72.new-features.php
-		 * 7.2: `object` Parameter and Covariant Return Typing, Abstract Function Override, and Allow Trailing Comma for Grouped Namespaces
 		 *
 		 * @return bool
 		 */
 		private function php_version_check() {
-			$php_required_version = '5.6';
+			$php_required_version = '7.0';
 
 			if ( version_compare( PHP_VERSION, $php_required_version, '<' ) ) {
 				if (
@@ -193,13 +186,9 @@ if (
 					&& current_user_can( 'activate_plugins' )
 				) {
 					$message = '<p>';
-
 					$message .= sprintf( __( '%s requires PHP version %s or newer to work. Please contact your website host and inquire about updating PHP.', PLUGIN_TEXT_DOMAIN ), $this->get_name(), $php_required_version );
-
 					$message .= sprintf( ' <a href="%1$s">%1$s</a>', 'https://wordpress.org/about/requirements/' );
-
 					$message .= '</p>';
-
 					tribe_notice( PLUGIN_TEXT_DOMAIN . '-php-version', $message, [ 'type' => 'error' ] );
 				}
 
@@ -211,8 +200,6 @@ if (
 
 		/**
 		 * Use Tribe Autoloader for all class files within this namespace in the 'src' directory.
-		 *
-		 * TODO: Delete this method and its usage throughout this file if there is no `src` directory, such as if there are no settings being added to the admin UI.
 		 *
 		 * @return Tribe__Autoloader
 		 */

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tribe\Extensions\Example;
+namespace Tribe\Extensions\OpenStreetMap;
 
 use Tribe__Settings_Manager;
 
