@@ -1,21 +1,23 @@
-=== [Extension Name] ===
+=== The Events Calendar Extension: OpenStreetMap ===
 Contributors: ModernTribe
 Donate link: http://m.tri.be/29
 Tags: events, calendar
-Requires at least: 4.5
-Tested up to: 4.9.6
-Requires PHP: 5.6
+Requires at least: 4.9
+Tested up to: 5.3
+Requires PHP: 7.0
 Stable tag: 1.0.0
 License: GPL version 3 or any later version
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-[Extension Description]
+The extension replaces most Google Maps functionality with that of OpenStreetMap, including map displays on single event pages, and Events Calendar PRO's Map View, and single venue pages.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+The extension replace all Google Maps functionality with that of OpenStreetMap, including map displays on single event pages, and Events Calendar PRO's Map View, and single venue pages.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and Markdown parsed.
+This extension requires the [Leaflet Map](https://wordpress.org/plugins/leaflet-map/) plugin. Special thanks to Gerd Weyhing for the [inspiration](https://woyng.com/the-events-calendar-mit-openstreetmaps-statt-google-maps/).
+
+Note: This extension doesn't yet support venue geocoding.
 
 == Installation ==
 
@@ -37,6 +39,6 @@ We're always interested in your feedback and our [Help Desk](https://support.the
 
 == Changelog ==
 
-= [1.0.0] YYYY-MM-DD =
+= [1.0.0] 2019-11-20 =
 
 * Initial release
