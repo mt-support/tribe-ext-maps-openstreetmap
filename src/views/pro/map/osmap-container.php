@@ -13,6 +13,15 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
+$zoomlevel = tribe_get_option( 'tribe_ext_openstreetmap_zoom_level_map' );
 
-$shortcode  = '[leaflet-map zoomcontrol zoom=3]';
+// Zoom levels 19 and 20 don't render the map.
+$zoomlevel = $zoomlevel > 18 ? 18 : $zoomlevel;
+
+$zoomcontrol = tribe_get_option( 'tribe_ext_openstreetmap_zoom_control' );
+
+$center = esc_html( tribe_get_option( 'tribe_ext_openstreetmap_default_map_address' ) );
+
+$shortcode  = '[leaflet-map address="' . $center . '" zoomcontrol=' . $zoomcontrol . ' zoom=' . $zoomlevel . ']';
+
 echo do_shortcode( $shortcode );

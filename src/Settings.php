@@ -193,18 +193,32 @@ class Settings {
 	 */
 	public function add_settings() {
 		$fields = [
-			$this->opts_prefix . 'mapZoomLevel' => [ // TODO
-				'type'            => 'text',
-				'label'           => esc_html__( 'Map default zoom level', PLUGIN_TEXT_DOMAIN ),
-				'tooltip'         => esc_html__( '0 = zoomed out; 20 = zoomed in.', PLUGIN_TEXT_DOMAIN ),
-				'size'            => 'small',
-				'validation_type' => 'number_or_percent',
-			],
 			$this->opts_prefix . 'zoom_control' => [ // TODO
 				'type'            => 'checkbox_bool',
 				'label'           => esc_html__( 'Enable zoom control', PLUGIN_TEXT_DOMAIN ),
 				'tooltip'         => esc_html__( 'Check to enable zoom control buttons on the map', PLUGIN_TEXT_DOMAIN ),
 				'validation_type' => 'boolean',
+			],
+			$this->opts_prefix . 'zoom_level_single' => [ // TODO
+				'type'            => 'text',
+				'label'           => esc_html__( 'Default zoom level', PLUGIN_TEXT_DOMAIN ),
+				'tooltip'         => esc_html__( 'Default zoom level for single event view and venue page*. 0 = zoomed out; 20 = zoomed in.', PLUGIN_TEXT_DOMAIN ) . " *" . esc_html__( 'Only works with Events Calendar PRO.', PLUGIN_TEXT_DOMAIN ),
+				'size'            => 'small',
+				'validation_type' => 'number_or_percent',
+			],
+			$this->opts_prefix . 'zoom_level_map' => [ // TODO
+				'type'            => 'text',
+				'label'           => esc_html__( 'Default zoom level for Map view', PLUGIN_TEXT_DOMAIN ),
+				'tooltip'         => esc_html__( 'Default zoom level for Map view. 0 = zoomed out; 20 = zoomed in.', PLUGIN_TEXT_DOMAIN ) . " " . esc_html__( 'Only works with Events Calendar PRO.', PLUGIN_TEXT_DOMAIN ),
+				'size'            => 'small',
+				'validation_type' => 'number_or_percent',
+			],
+			$this->opts_prefix . 'default_map_address' => [ // TODO
+				'type'            => 'text',
+				'label'           => esc_html__( 'Default Map view address', PLUGIN_TEXT_DOMAIN ),
+				'tooltip'         => esc_html__( 'Add here an address where you want the map on Map view to be centered on. Required format: Street and House Number, ZIP City, Country.', PLUGIN_TEXT_DOMAIN ) . " " . esc_html__( 'Only works with Events Calendar PRO.', PLUGIN_TEXT_DOMAIN ),
+				'validation_type' => 'textarea',
+				'can_be_empty'    => true
 			],
 		];
 
