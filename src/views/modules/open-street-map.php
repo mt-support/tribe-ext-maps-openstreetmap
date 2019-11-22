@@ -27,10 +27,10 @@ $mapheight = tribe_get_option( 'tribe_ext_openstreetmap_map_container_height' );
 
 $venue_id = tribe_get_venue_id();
 
-/* If Events Calendar PRO is active and we are using Lat and Lng then */
-if ( class_exists( 'Tribe__Events__Pro__Geo_Loc' ) && tribe_get_option( 'tribe_ext_openstreetmap_use_lat_long' ) ) {
+/* If Events Calendar PRO is active and we are using Lat and Lng for the venue */
+if ( class_exists( 'Tribe__Events__Pro__Geo_Loc' ) && 1 == get_post_meta( $venue_id, '_VenueOverwriteCoords', true ) ) {
 	$coords = tribe_get_coordinates( $venue_id );
-	$address = 'lat=' . number_format((float)$coords['lat'], 2, '.', '') . ' lng=' . number_format((float)$coords['lng'], 2, '.', '');
+	$address = 'lat=' . $coords['lat'] . ' lng=' . $coords['lng'];
 	}
 /* Otherwise use the address */
 else {
@@ -40,5 +40,8 @@ else {
 
 $shortcode  = '[leaflet-map ' . $address . ' zoom=' . $zoomlevel . ' zoomcontrol=' . $zoomcontrol . ' height=' . $mapheight . ']';
 $shortcode .= '[leaflet-marker]';
-var_dump($shortcode);
+
+/* For testing / debugging */
+//var_dump($shortcode);
+
 echo do_shortcode( $shortcode );
