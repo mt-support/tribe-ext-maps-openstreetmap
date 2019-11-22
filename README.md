@@ -1,4 +1,4 @@
-# The Events Calendar Extension: OpenSteetMap
+# The Events Calendar Extension: OpenStreetMap
 
 Contributors: ModernTribe  
 Donate link: http://m.tri.be/29  
