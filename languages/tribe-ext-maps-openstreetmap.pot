@@ -2,31 +2,125 @@
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"Project-Id-Version: [Base Plugin Name] Extension: [Extension Name]\n"
-"POT-Creation-Date: 2018-02-14 13:59-0600\n"
-"PO-Revision-Date: 2018-02-14 13:58-0600\n"
+"Project-Id-Version: The Events Calendar Extension: OpenStreetMap\n"
+"POT-Creation-Date: 2019-11-22 18:00+0100\n"
+"PO-Revision-Date: 2019-11-22 14:06+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
-"X-Poedit-WPHeader: extension-template.php\n"
+"X-Poedit-WPHeader: tribe-ext-maps-openstreetmap.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: src/Settings.php:196
+msgctxt "option label"
+msgid "Enable zoom control"
+msgstr ""
+
+#: src/Settings.php:197
+msgid "Check to enable zoom control buttons on the map."
+msgstr ""
+
+#: src/Settings.php:202
+msgctxt "option label"
+msgid "Default zoom level"
+msgstr ""
+
+#: src/Settings.php:203
+msgid "Default zoom level for single event page and venue page*."
+msgstr ""
+
+#: src/Settings.php:203 src/Settings.php:222
+msgid "0 = zoomed out; 20 = zoomed in."
+msgstr ""
+
+#: src/Settings.php:203 src/Settings.php:210
+#, php-format
+msgid "Note: Venue page requires %s."
+msgstr ""
+
+#: src/Settings.php:209
+msgctxt "option label"
+msgid "Default height of map"
+msgstr ""
+
+#: src/Settings.php:210 src/Settings.php:229
+msgid "Defaults to 250px when left empty."
+msgstr ""
+
+#: src/Settings.php:210
+msgid "Affects single event page and venue page*."
+msgstr ""
+
+#: src/Settings.php:221
+msgctxt "option label"
+msgid "Default zoom level for Map view"
+msgstr ""
+
+#: src/Settings.php:228
+msgctxt "option label"
+msgid "Default height of map on Map view"
+msgstr ""
+
+#: src/Settings.php:236
+msgctxt "option label"
+msgid "Default address for Map view"
+msgstr ""
+
+#: src/Settings.php:237
+msgid ""
+"Enter the address where you want the map to be centered on on Map view. "
+"Required format: Street and House Number, ZIP City, Country."
+msgstr ""
+
+#: src/Settings.php:257
+msgctxt "Settings header"
+msgid "Map View Settings"
+msgstr ""
+
+#: src/Settings.php:260
+#, php-format
+msgid "The below settings affect only the Map view, which requires %s."
+msgstr ""
+
+#: src/Settings_Helper.php:129
+msgid "Miscellaneous Settings"
+msgstr ""
+
+#: tribe-ext-maps-openstreetmap.php:191
+#, php-format
+msgid ""
+"%s requires PHP version %s or newer to work. Please contact your website "
+"host and inquire about updating PHP."
+msgstr ""
 
 #. Plugin Name of the plugin/theme
-msgid "[Base Plugin Name] Extension: [Extension Name]"
+msgid "The Events Calendar Extension: OpenStreetMap"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://theeventscalendar.com/extensions/openstreetmap/"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "[Extension Description]"
+msgid ""
+"Replace most of the Google Maps functionality with that of OpenStreetMap, "
+"including map displays on single event pages, and Events Calendar PRO's Map "
+"View, and single venue pages. <strong>This extension requires the <a href="
+"\"plugin-install.php?s=Leaflet+Map&tab=search&type=term\">Leaflet Map</a> "
+"plugin.</strong> Special thanks to Gerd Weyhing for the <a href=\"https://"
+"woyng.com/the-events-calendar-mit-openstreetmaps-statt-google-maps/\" target="
+"\"_blank\">inspiration</a>. Note: This extension doesn't yet support venue "
+"geocoding."
 msgstr ""
 
 #. Author of the plugin/theme
