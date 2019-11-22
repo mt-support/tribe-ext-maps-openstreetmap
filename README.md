@@ -16,7 +16,9 @@ The extension replaces most of the Google Maps functionality with that of OpenSt
 
 This extension requires the [Leaflet Map](https://wordpress.org/plugins/leaflet-map/) plugin by [bozdoz](https://profiles.wordpress.org/bozdoz/). Special thanks to Gerd Weyhing for the [inspiration](https://woyng.com/the-events-calendar-mit-openstreetmaps-statt-google-maps/).
 
-**Note: This extension doesn't yet support venue geocoding.** You can still use a Google Maps API key for that, which you have to enter at `Events > Settings > APIs`.
+**Note 1: This extension doesn't yet support venue geocoding.** You can still use a Google Maps API key for that, which you have to enter at `Events > Settings > APIs`.
+
+**Note 2: This extension works only with the 'classic' views.** As you might have heard we are redesigning the calendar views. This extension does not yet support the new views, which are in beta phase at the time of publishing.
 
 ## Installation
 
