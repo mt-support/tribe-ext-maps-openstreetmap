@@ -212,12 +212,6 @@ class Settings {
 				'validation_type' => 'number_or_percent',
 				'can_be_empty'    => true,
 			],
-			$this->opts_prefix . 'use_lat_long' => [ // TODO
-				'type'            => 'checkbox_bool',
-				'label'           => esc_html_x( 'Use latitude and longitude', 'option label', PLUGIN_TEXT_DOMAIN ),
-				'tooltip'         => esc_html__( 'Check this to use the latitude and longitude data saved with the venue instead of the address.', PLUGIN_TEXT_DOMAIN ) . ' ' . sprintf( esc_html__( 'Requires %s.', PLUGIN_TEXT_DOMAIN ), '<a href="http://m.tri.be/k0" target="_blank">Events Calendar PRO</a>' ),
-				'validation_type' => 'boolean',
-			],
 			$this->opts_prefix . 'Example'   => [
 				'type' => 'html',
 				'html' => $this->get_example_intro_text(),
@@ -268,6 +262,5 @@ class Settings {
 		$result .= '</div>';
 		return $result;
 	}
-
 
 } // class

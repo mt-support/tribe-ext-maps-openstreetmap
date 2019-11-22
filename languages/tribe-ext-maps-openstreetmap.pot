@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: The Events Calendar Extension: OpenStreetMap\n"
-"POT-Creation-Date: 2019-11-22 17:34+0100\n"
+"POT-Creation-Date: 2019-11-22 18:00+0100\n"
 "PO-Revision-Date: 2019-11-22 14:06+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Default zoom level for single event page and venue page*."
 msgstr ""
 
-#: src/Settings.php:203 src/Settings.php:228
+#: src/Settings.php:203 src/Settings.php:222
 msgid "0 = zoomed out; 20 = zoomed in."
 msgstr ""
 
@@ -53,7 +53,7 @@ msgctxt "option label"
 msgid "Default height of map"
 msgstr ""
 
-#: src/Settings.php:210 src/Settings.php:235
+#: src/Settings.php:210 src/Settings.php:229
 msgid "Defaults to 250px when left empty."
 msgstr ""
 
@@ -61,49 +61,33 @@ msgstr ""
 msgid "Affects single event page and venue page*."
 msgstr ""
 
-#: src/Settings.php:217
-msgctxt "option label"
-msgid "Use latitude and longitude"
-msgstr ""
-
-#: src/Settings.php:218
-msgid ""
-"Check this to use the latitude and longitude data saved with the venue "
-"instead of the address."
-msgstr ""
-
-#: src/Settings.php:218
-#, php-format
-msgid "Requires %s."
-msgstr ""
-
-#: src/Settings.php:227
+#: src/Settings.php:221
 msgctxt "option label"
 msgid "Default zoom level for Map view"
 msgstr ""
 
-#: src/Settings.php:234
+#: src/Settings.php:228
 msgctxt "option label"
 msgid "Default height of map on Map view"
 msgstr ""
 
-#: src/Settings.php:242
+#: src/Settings.php:236
 msgctxt "option label"
 msgid "Default address for Map view"
 msgstr ""
 
-#: src/Settings.php:243
+#: src/Settings.php:237
 msgid ""
 "Enter the address where you want the map to be centered on on Map view. "
 "Required format: Street and House Number, ZIP City, Country."
 msgstr ""
 
-#: src/Settings.php:263
+#: src/Settings.php:257
 msgctxt "Settings header"
 msgid "Map View Settings"
 msgstr ""
 
-#: src/Settings.php:266
+#: src/Settings.php:260
 #, php-format
 msgid "The below settings affect only the Map view, which requires %s."
 msgstr ""

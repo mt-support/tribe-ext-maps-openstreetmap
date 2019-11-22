@@ -27,8 +27,8 @@ $mapheight = tribe_get_option( 'tribe_ext_openstreetmap_map_container_height' );
 
 $venue_id = tribe_get_venue_id();
 
-/* If Events Calendar PRO is active and we are using Lat and Lng then */
-if ( class_exists( 'Tribe__Events__Pro__Geo_Loc' ) && tribe_get_option( 'tribe_ext_openstreetmap_use_lat_long' ) ) {
+/* If Events Calendar PRO is active and we are using Lat and Lng for the venue */
+if ( class_exists( 'Tribe__Events__Pro__Geo_Loc' ) && 1 == get_post_meta( $venue_id, '_VenueOverwriteCoords', true ) ) {
 	$coords = tribe_get_coordinates( $venue_id );
 	$address = 'lat=' . $coords['lat'] . ' lng=' . $coords['lng'];
 	}
