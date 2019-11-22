@@ -39,7 +39,6 @@ The plugin will add the following settings to the `Events > Settings > General` 
 * Enable zoom control - Show or hide the zoom control buttons on the map on the single event page and on the venue page.
 * Default zoom level - Sets the default zoom level for the map on the single event page and on the venue page.
 * Default height of map - Sets the height of the map container on the single event page and on the venue page.
-* Use latitude and longitude* - Instead of the venue address use the latitude and longitude which is saved with the event.  
 
 *Note: The venue page and the usage of latitude and longitude requires [Events Calendar PRO](http://m.tri.be/k0).
 
