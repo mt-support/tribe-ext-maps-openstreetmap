@@ -3,7 +3,7 @@
  * Plugin Name:       The Events Calendar Extension: OpenStreetMap
  * Plugin URI:        https://theeventscalendar.com/extensions/openstreetmap/
  * GitHub Plugin URI: https://github.com/mt-support/tribe-ext-maps-openstreetmap
- * Description:       Replace most of the Google Maps functionality with that of OpenStreetMap, including map displays on single event pages, and Events Calendar PRO's Map View, and single venue pages. <strong>This extension requires the <a href="plugin-install.php?s=Leaflet+Map&tab=search&type=term">Leaflet Map</a> plugin.</strong> Special thanks to Gerd Weyhing for the <a href="https://woyng.com/the-events-calendar-mit-openstreetmaps-statt-google-maps/" target="_blank">inspiration</a>. Note: This extension doesn't yet support venue geocoding.
+ * Description:       Replace most of the Google Maps functionality with that of OpenStreetMap, including map displays on single event pages, and Events Calendar PRO's Map View, and single venue pages. <strong>This extension requires the <a href="plugin-install.php?s=Leaflet+Map&tab=search&type=term">Leaflet Map</a> plugin.</strong> Special thanks to Gerd Weyhing for the <a href="https://woyng.com/the-events-calendar-mit-openstreetmaps-statt-google-maps/" target="_blank">inspiration</a>. Note: This extension doesn't yet support venue geocoding. <strong>Warning: your own template overrides for <code>modules/map.php</code> and <code>pro/map/gmap-container.php</code> won't work.</strong>
  * Version:           1.0.0
  * Extension Class:   Tribe\Extensions\OpenStreetMap\Main
  * Author:            Modern Tribe, Inc.
@@ -240,7 +240,7 @@ if (
 		}
 
 		/**
-		 * TODO: Testing Hello World. Delete this for your new extension.
+		 * Adds a warning message at the top of the admin pages, when the Leaflet Map plugin is not installed and activated.
 		 */
 		public function missing_plugin_message() {
 			$message = sprintf( '<p>&#9888; Please note, %s requires the %s plugin to work.</p>', '<strong>' . $this->get_name() . '</strong>', '<a href="https://wordpress.org/plugins/leaflet-map/" target="_blank">Leaflet Map &#x1F5D7;</a>' );
