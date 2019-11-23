@@ -84,10 +84,10 @@ if (
 		 * @return array
 		 */
 		private function templates() {
-			return array(
+			return [
 				'modules/map.php'            => 'src/views/modules/open-street-map.php',
 				'pro/map/gmap-container.php' => 'src/views/pro/map/osmap-container.php',
-			);
+			];
 		}
 
 		/**
@@ -162,7 +162,7 @@ if (
 
 			// If Leaflet Map plugin is active, then do the magic.
 			if ( class_exists( \Leaflet_Map::class ) ) {
-				add_action( 'init', array( $this, 'common_setup' ) );
+				add_action( 'init', [ $this, 'common_setup' ] );
 			}
 			else {
 				$this->missing_plugin_message();
